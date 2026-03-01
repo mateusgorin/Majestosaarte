@@ -1,0 +1,119 @@
+'use client';
+
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ProductCard from '@/components/ProductCard';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { CartProvider, Product } from '@/hooks/use-cart';
+import { motion } from 'motion/react';
+import { Cookie } from 'lucide-react';
+
+const DELICIAS_PRODUCTS: Product[] = [
+  { id: 'del-1', name: 'Biscoitinhos Recheados', price: 22.00, category: 'Biscoitos', image: 'https://picsum.photos/seed/filled/600/600' },
+  { id: 'del-2', name: 'Casadinhos', price: 18.00, category: 'Biscoitos', image: 'https://picsum.photos/seed/casadinho/600/600' },
+  { id: 'del-3', name: 'Biscoitinho de Ninho', price: 20.00, category: 'Biscoitos', image: 'https://picsum.photos/seed/ninho/600/600' },
+  { id: 'del-4', name: 'Brigadeiro Gourmet (6 un)', price: 24.00, category: 'Doces', image: 'https://picsum.photos/seed/brigadeiro/600/600' },
+  { id: 'del-5', name: 'Brigadeiro Gourmet (12 un)', price: 42.00, category: 'Doces', image: 'https://picsum.photos/seed/brigadeiro12/600/600' },
+];
+
+export default function DeliciasPage() {
+  const [filter, setFilter] = useState('Todos');
+  const categories = ['Todos', 'Biscoitos', 'Doces'];
+
+  const filteredProducts = filter === 'Todos' 
+    ? DELICIAS_PRODUCTS 
+    : DELICIAS_PRODUCTS.filter(p => p.category === filter);
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+        
+        <main className="flex-grow py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-16 text-center flex flex-col items-center">
+              <div className="inline-flex items-center justify-center p-3 bg-[#C5A059]/10 rounded-full mb-6">
+                <Cookie className="w-8 h-8 text-[#C5A059]" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-serif text-[#5A5A40] mb-6 tracking-tight">Delícias Artesanais</h1>
+              <p className="text-[#4a4a40]/70 max-w-2xl mx-auto leading-relaxed mb-10">
+                Sabores que abraçam. Nossos produtos alimentícios são produzidos de forma totalmente artesanal, 
+                com ingredientes selecionados e sem conservantes.
+              </p>
+
+              <div className="inline-flex items-center p-1.5 bg-white rounded-2xl warm-shadow border border-[#5A5A40]/10 mb-10">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setFilter(cat)}
+                    className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                      filter === cat 
+                        ? 'olive-bg text-white shadow-sm scale-105' 
+                        : 'text-[#4a4a40]/60 hover:text-[#5A5A40] hover:bg-[#5A5A40]/5'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              <div className="inline-block bg-[#5A5A40]/5 px-4 py-2 rounded-lg border border-[#5A5A40]/10">
+                <p className="text-sm text-[#5A5A40] font-medium">
+                  ⚠️ Produção limitada para garantir o frescor e a qualidade.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-[3rem] p-8 md:p-12 warm-shadow border border-[#5A5A40]/5">
+              <div className="relative aspect-video rounded-2xl overflow-hidden">
+                <Image
+                  src="https://picsum.photos/seed/baking/800/600"
+                  alt="Produção Artesanal"
+                  fill
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div>
+                <h2 className="text-3xl font-serif text-[#5A5A40] mb-6">Cuidado em cada fornada</h2>
+                <p className="text-[#4a4a40] leading-relaxed mb-6">
+                  Nossas delícias são feitas sob encomenda para garantir que cheguem fresquinhas até você. 
+                  Utilizamos receitas tradicionais de família com um toque gourmet moderno.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-[#4a4a40]">
+                    <div className="w-2 h-2 rounded-full bg-[#C5A059] mr-3"></div>
+                    Ingredientes de primeira qualidade
+                  </li>
+                  <li className="flex items-center text-[#4a4a40]">
+                    <div className="w-2 h-2 rounded-full bg-[#C5A059] mr-3"></div>
+                    Sem conservantes artificiais
+                  </li>
+                  <li className="flex items-center text-[#4a4a40]">
+                    <div className="w-2 h-2 rounded-full bg-[#C5A059] mr-3"></div>
+                    Embalagens ideais para presente
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-[#4a4a40]/60 italic">
+                &quot;Estamos sempre testando novos sabores. Fique de olho para as próximas delícias do nosso cardápio!&quot;
+              </p>
+            </div>
+          </div>
+        </main>
+
+        <Footer />
+        <WhatsAppButton />
+    </div>
+  );
+}
