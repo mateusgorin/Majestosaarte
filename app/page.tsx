@@ -59,7 +59,7 @@ export default function Home() {
                 referrerPolicy="no-referrer"
               />
               {/* Efeito Vidro (Glassmorphism Overlay) */}
-              <div className="absolute inset-0 bg-[#5A5A40]/20 backdrop-blur-[3px]"></div>
+              <div className="absolute inset-0 bg-[#5D4037]/20 backdrop-blur-[3px]"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
             </div>
             
@@ -81,19 +81,23 @@ export default function Home() {
                   cuidado e um propósito espiritual para o seu lar.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    href="/artesanato" 
-                    className="bg-white text-[#5A5A40] px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all flex items-center justify-center space-x-2"
-                  >
-                    <span>Ver Artesanato</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                  <Link 
-                    href="/delicias" 
-                    className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#5A5A40] transition-all flex items-center justify-center"
-                  >
-                    Delícias Artesanais
-                  </Link>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link 
+                      href="/artesanato" 
+                      className="bg-white text-[#5D4037] px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
+                    >
+                      <span>Ver Artesanato</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link 
+                      href="/delicias" 
+                      className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#5D4037] transition-all flex items-center justify-center w-full sm:w-auto"
+                    >
+                      Delícias Artesanais
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -108,14 +112,14 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <h2 className="text-4xl md:text-5xl font-serif text-[#5A5A40] mb-8">
+                  <h2 className="text-4xl md:text-5xl font-serif text-[#5D4037] mb-8">
                     Nossa Essência
                   </h2>
-                  <p className="text-lg text-[#4a4a40] leading-relaxed mb-6">
+                  <p className="text-lg text-[#3E2723] leading-relaxed mb-6">
                     A Majestosa Arte é um ateliê artesanal dedicado à criação de peças feitas à mão, 
                     unindo fé cristã, arte e amor em cada detalhe.
                   </p>
-                  <p className="text-lg text-[#4a4a40] leading-relaxed mb-8">
+                  <p className="text-lg text-[#3E2723] leading-relaxed mb-8">
                     Nascemos do desejo de transformar materiais simples em objetos que tocam a alma. 
                     Seja através de uma imagem sacra, um tapete de crochê ou um biscoito caseiro, 
                     nosso objetivo é levar um pedaço de carinho e espiritualidade para a sua vida.
@@ -123,11 +127,11 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-8">
                     <div className="flex flex-col">
                       <span className="text-3xl font-serif text-[#C5A059] mb-1">100%</span>
-                      <span className="text-sm uppercase tracking-wider text-[#4a4a40]/60 font-semibold">Feito à Mão</span>
+                      <span className="text-sm uppercase tracking-wider text-[#3E2723]/60 font-semibold">Feito à Mão</span>
                     </div>
                     <div className="flex flex-col">
                       <span className="text-3xl font-serif text-[#C5A059] mb-1">Fé</span>
-                      <span className="text-sm uppercase tracking-wider text-[#4a4a40]/60 font-semibold">Em cada detalhe</span>
+                      <span className="text-sm uppercase tracking-wider text-[#3E2723]/60 font-semibold">Em cada detalhe</span>
                     </div>
                   </div>
                 </motion.div>
@@ -155,8 +159,8 @@ export default function Home() {
           <section className="py-24 bg-[#f5f5f0]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-serif text-[#5A5A40] mb-4">Explore Nossas Criações</h2>
-                <p className="text-[#4a4a40]/70 max-w-2xl mx-auto">
+                <h2 className="text-4xl font-serif text-[#5D4037] mb-4">Explore Nossas Criações</h2>
+                <p className="text-[#3E2723]/70 max-w-2xl mx-auto">
                   Dividimos nosso ateliê em categorias para que você encontre exatamente o que sua alma e seu lar precisam.
                 </p>
               </div>
@@ -169,9 +173,10 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
+                    whileHover={{ y: -10 }}
                   >
                     <Link href={cat.href} className="group block">
-                      <div className="bg-white rounded-3xl overflow-hidden warm-shadow transition-all duration-300 group-hover:-translate-y-2 border border-[#5A5A40]/5">
+                      <div className="bg-white rounded-3xl overflow-hidden warm-shadow transition-all duration-300 border border-[#5D4037]/5">
                         <div className="relative h-64">
                           <Image
                             src={cat.image}
@@ -180,7 +185,7 @@ export default function Home() {
                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                             referrerPolicy="no-referrer"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#5A5A40]/80 to-transparent opacity-60"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#5D4037]/80 to-transparent opacity-60"></div>
                           <div className="absolute bottom-4 left-4 text-white">
                             <div className="bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg inline-block">
                               <h3 className="text-sm font-serif font-semibold leading-tight">{cat.title}</h3>
@@ -188,8 +193,8 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="p-6">
-                          <p className="text-[#4a4a40]/70 text-sm mb-4">{cat.description}</p>
-                          <span className="text-[#5A5A40] font-semibold text-sm flex items-center group-hover:underline">
+                          <p className="text-[#3E2723]/70 text-sm mb-4">{cat.description}</p>
+                          <span className="text-[#5D4037] font-semibold text-sm flex items-center group-hover:underline">
                             Ver Coleção <ArrowRight className="w-4 h-4 ml-2" />
                           </span>
                         </div>
@@ -204,7 +209,7 @@ export default function Home() {
           {/* CTA Section */}
           <section className="py-24">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-[#5A5A40] rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+              <div className="bg-[#5D4037] rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-32 h-32 bg-[#C5A059]/20 rounded-full -translate-x-16 -translate-y-16"></div>
                 <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#C5A059]/10 rounded-full translate-x-32 translate-y-32"></div>
                 
@@ -219,15 +224,17 @@ export default function Home() {
                     Estamos prontos para te atender de forma humanizada e personalizada via WhatsApp. 
                     Clique abaixo e fale com a gente!
                   </p>
-                  <a 
+                  <motion.a 
                     href="https://wa.me/556182493289" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-10 py-5 rounded-full font-bold text-xl transition-all shadow-xl hover:scale-105"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center space-x-3 bg-[#25D366] hover:bg-[#20ba5a] text-white px-10 py-5 rounded-full font-bold text-xl transition-all shadow-xl"
                   >
                     <Coffee className="w-6 h-6" />
                     <span>Chamar no WhatsApp</span>
-                  </a>
+                  </motion.a>
                 </motion.div>
               </div>
             </div>

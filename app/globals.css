@@ -12,19 +12,19 @@
 }
 
 .rustic-border {
-  border: 1px solid rgba(90, 90, 64, 0.2);
+  border: 1px solid rgba(93, 64, 55, 0.2);
 }
 
 .warm-shadow {
-  box-shadow: 0 4px 20px rgba(90, 90, 64, 0.08);
+  box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08);
 }
 
-.olive-bg {
-  background-color: #5A5A40;
+.wood-bg {
+  background-color: #5D4037;
 }
 
-.olive-text {
-  color: #5A5A40;
+.wood-text {
+  color: #5D4037;
 }
 
 .gold-accent {

@@ -1,7 +1,8 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/hooks/use-cart';
+import ClientLayout from '@/components/ClientLayout';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,12 +20,14 @@ export const metadata: Metadata = {
   description: 'Peças feitas à mão com fé, arte e amor.',
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${cormorant.variable}`}>
-      <body suppressHydrationWarning className="bg-[#f5f5f0] text-[#4a4a40] font-sans">
+      <body suppressHydrationWarning className="bg-[#f5f5f0] text-[#3E2723] font-sans">
         <CartProvider>
-          {children}
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </CartProvider>
       </body>
     </html>

@@ -19,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="bg-white rounded-3xl overflow-hidden warm-shadow border border-[#5A5A40]/5 flex flex-col h-full"
+      className="bg-white rounded-3xl overflow-hidden warm-shadow border border-[#5D4037]/5 flex flex-col h-full"
     >
       <div className="relative aspect-square overflow-hidden">
         <Image
@@ -30,7 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           referrerPolicy="no-referrer"
         />
         <div className="absolute top-3 left-3 flex flex-col gap-2">
-          <span className="bg-[#f5f5f0]/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold text-[#5A5A40]">
+          <span className="bg-[#f5f5f0]/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold text-[#5D4037]">
             {product.category}
           </span>
           {quantity > 0 && (
@@ -47,7 +47,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       
       <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-xl font-serif text-[#4a4a40] mb-2 line-clamp-1">{product.name}</h3>
+        <h3 className="text-xl font-serif text-[#3E2723] mb-2 line-clamp-1">{product.name}</h3>
         <p className="text-[#C5A059] font-medium text-lg mb-4">
           R$ {product.price.toFixed(2).replace('.', ',')}
         </p>
@@ -60,8 +60,10 @@ export default function ProductCard({ product }: ProductCardProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => addToCart(product)}
-                className="w-full olive-bg text-white py-3 rounded-full flex items-center justify-center space-x-2 hover:opacity-90 transition-all active:scale-95 group"
+                className="w-full wood-bg text-white py-3 rounded-full flex items-center justify-center space-x-2 hover:opacity-90 transition-all group"
               >
                 <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
                 <span className="text-sm font-medium">Adicionar</span>
@@ -72,18 +74,18 @@ export default function ProductCard({ product }: ProductCardProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="flex items-center justify-between bg-[#f5f5f0] rounded-full p-1 border border-[#5A5A40]/10"
+                className="flex items-center justify-between bg-[#f5f5f0] rounded-full p-1 border border-[#5D4037]/10"
               >
                 <button
                   onClick={() => updateQuantity(product.id, quantity - 1)}
-                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5A5A40]"
+                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="font-bold text-[#5A5A40]">{quantity}</span>
+                <span className="font-bold text-[#5D4037]">{quantity}</span>
                 <button
                   onClick={() => updateQuantity(product.id, quantity + 1)}
-                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5A5A40]"
+                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
