@@ -18,17 +18,17 @@ const ARTESANATO_PRODUCTS: Product[] = [
   { id: 'rel-4', name: 'Coração 3D Personalizado', price: 85.00, category: 'Religioso', image: 'https://i.postimg.cc/TYZpwb3n/IMG-20260301-WA0222.jpg' },
   
   // Crochê
-  { id: 'cro-1', name: 'Tapete de Crochê', price: 150.00, category: 'Crochê', image: 'https://picsum.photos/seed/rug/600/600' },
-  { id: 'cro-2', name: 'Colcha de Retalhos', price: 450.00, category: 'Crochê', image: 'https://picsum.photos/seed/quilt/600/600' },
-  { id: 'cro-3', name: 'Forro de Mesa Crochê', price: 180.00, category: 'Crochê', image: 'https://picsum.photos/seed/tablecloth/600/600' },
-  { id: 'cro-4', name: 'Sousplat de Crochê (Un)', price: 35.00, category: 'Crochê', image: 'https://picsum.photos/seed/sousplat/600/600' },
-  { id: 'cro-5', name: 'Centro de Mesa Crochê', price: 95.00, category: 'Crochê', image: 'https://picsum.photos/seed/centerpiece/600/600' },
+  { id: 'cro-1', name: 'Tapete de Crochê', price: 150.00, category: 'Crochê', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'cro-2', name: 'Colcha de Retalhos', price: 450.00, category: 'Crochê', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'cro-3', name: 'Forro de Mesa Crochê', price: 180.00, category: 'Crochê', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'cro-4', name: 'Sousplat de Crochê (Un)', price: 35.00, category: 'Crochê', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'cro-5', name: 'Centro de Mesa Crochê', price: 95.00, category: 'Crochê', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
   
   // Decorativas
-  { id: 'dec-1', name: 'Castiçal de Gesso', price: 55.00, category: 'Decorativo', image: 'https://picsum.photos/seed/candle/600/600' },
-  { id: 'dec-2', name: 'Porta Anel de Gesso', price: 25.00, category: 'Decorativo', image: 'https://picsum.photos/seed/ring/600/600' },
-  { id: 'dec-3', name: 'Porta Joias de Gesso', price: 40.00, category: 'Decorativo', image: 'https://picsum.photos/seed/jewelry/600/600' },
-  { id: 'dec-4', name: 'Caixa em Madeira MDF', price: 75.00, category: 'Decorativo', image: 'https://picsum.photos/seed/box/600/600' },
+  { id: 'dec-1', name: 'Castiçal de Gesso', price: 55.00, category: 'Decorativo', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'dec-2', name: 'Porta Anel de Gesso', price: 25.00, category: 'Decorativo', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'dec-3', name: 'Porta Joias de Gesso', price: 40.00, category: 'Decorativo', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
+  { id: 'dec-4', name: 'Caixa em Madeira MDF', price: 75.00, category: 'Decorativo', image: 'https://i.postimg.cc/RF7pyKbV/em-breve-1.png' },
 ];
 
 function ArtesanatoContent() {
