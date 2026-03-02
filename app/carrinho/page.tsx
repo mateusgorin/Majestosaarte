@@ -133,10 +133,21 @@ function CartContent() {
           >
             Limpar Carrinho
           </button>
+
+          {/* Mobile Checkout Shortcut */}
+          <div className="lg:hidden mt-8">
+            <button 
+              onClick={() => document.getElementById('checkout-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full olive-bg text-white py-4 rounded-full font-bold flex items-center justify-center space-x-2 shadow-md"
+            >
+              <span>Ir para Finalização</span>
+              <ArrowLeft className="w-4 h-4 rotate-180" />
+            </button>
+          </div>
         </div>
 
         {/* Summary & Checkout Form */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1" id="checkout-form">
           <div className="bg-white rounded-[2.5rem] p-8 warm-shadow border border-[#5A5A40]/5 sticky top-32">
             <h2 className="text-2xl font-serif text-[#5A5A40] mb-8">Finalizar Pedido</h2>
             

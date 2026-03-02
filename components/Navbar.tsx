@@ -38,26 +38,26 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <a href="/carrinho" className="relative p-2 text-[#5A5A40] hover:bg-[#5A5A40]/5 rounded-full transition-all">
+            <Link href="/carrinho" className="relative p-2 text-[#5A5A40] hover:bg-[#5A5A40]/5 rounded-full transition-all">
               <ShoppingCart className="w-6 h-6" />
               {totalItems > 0 && (
                 <span className="absolute top-0 right-0 bg-[#C5A059] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#f5f5f0]">
                   {totalItems}
                 </span>
               )}
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <a href="/carrinho" className="relative p-2 text-[#5A5A40]">
+            <Link href="/carrinho" className="relative p-2 text-[#5A5A40]">
               <ShoppingCart className="w-6 h-6" />
               {totalItems > 0 && (
                 <span className="absolute top-0 right-0 bg-[#C5A059] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#f5f5f0]">
                   {totalItems}
                 </span>
               )}
-            </a>
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-[#5A5A40]"

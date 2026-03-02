@@ -28,6 +28,28 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem('majestosa-cart');
+    if (savedCart) {
+      try {
+        const parsed = JSON.parse(savedCart);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setCart(parsed);
+      } catch (e) {
+        console.error('Failed to parse cart', e);
+      }
+    }
+    setIsInitialized(true);
+  }, []);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem('majestosa-cart', JSON.stringify(cart));
+    }
+  }, [cart, isInitialized]);
 
   const addToCart = (product: Product) => {
     setCart((prev) => {
