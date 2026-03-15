@@ -18,6 +18,24 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: 'Majestosa Arte | Ateliê Artesanal Cristão',
   description: 'Peças feitas à mão com fé, arte e amor.',
+  icons: {
+    icon: 'https://i.postimg.cc/mD3m9q8p/heart-icon.png',
+    apple: 'https://i.postimg.cc/mD3m9q8p/heart-icon.png',
+  },
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Majestosa Arte',
+  },
+};
+
+export const viewport = {
+  themeColor: '#5D4037',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

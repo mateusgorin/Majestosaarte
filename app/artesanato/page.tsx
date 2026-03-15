@@ -6,8 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { CartProvider, Product } from '@/hooks/use-cart';
-import { motion, AnimatePresence } from 'motion/react';
+import { Product } from '@/hooks/use-cart';
 import { Filter } from 'lucide-react';
 
 const ARTESANATO_PRODUCTS: Product[] = [
@@ -65,10 +64,8 @@ function ArtesanatoContent() {
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#5D4037]">Filtrar por Categoria</span>
             </div>
             {categories.map((cat) => (
-              <motion.button
+              <button
                 key={cat}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 onClick={() => setFilter(cat)}
                 className={`px-4 py-3 rounded-xl text-xs font-bold transition-all text-center ${
                   filter === cat 
@@ -77,30 +74,18 @@ function ArtesanatoContent() {
                 }`}
               >
                 {cat}
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
 
-        <motion.div 
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product) => (
-              <motion.div
-                key={product.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {filteredProducts.map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
 
         <div className="mt-20 p-10 bg-white rounded-[2rem] border border-dashed border-[#5D4037]/30 text-center">
           <p className="text-[#5D4037] font-serif text-xl italic">

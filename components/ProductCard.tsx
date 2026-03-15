@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useCart, Product } from '@/hooks/use-cart';
-import { Plus, Minus, ShoppingBasket, Check } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { Plus, Minus, Check } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -17,10 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const quantity = cartItem ? cartItem.quantity : 0;
 
   return (
-    <motion.div
-      whileHover={{ y: -5 }}
-      className="bg-white rounded-3xl overflow-hidden warm-shadow border border-[#5D4037]/5 flex flex-col h-full"
-    >
+    <div className="bg-white rounded-3xl overflow-hidden warm-shadow border border-[#5D4037]/5 flex flex-col h-full transition-transform duration-300 hover:-translate-y-1">
       <div className="relative aspect-square overflow-hidden">
         <Image
           src={product.image}
@@ -34,14 +30,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.category}
           </span>
           {quantity > 0 && (
-            <motion.span 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="bg-[#C5A059] text-white px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold flex items-center gap-1"
-            >
+            <span className="bg-[#C5A059] text-white px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold flex items-center gap-1">
               <Check className="w-3 h-3" />
               No Carrinho
-            </motion.span>
+            </span>
           )}
         </div>
       </div>
@@ -53,47 +45,33 @@ export default function ProductCard({ product }: ProductCardProps) {
         </p>
         
         <div className="mt-auto">
-          <AnimatePresence mode="wait">
-            {quantity === 0 ? (
-              <motion.button
-                key="add-button"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => addToCart(product)}
-                className="w-full wood-bg text-white py-3 rounded-full flex items-center justify-center space-x-2 hover:opacity-90 transition-all group"
+          {quantity === 0 ? (
+            <button
+              onClick={() => addToCart(product)}
+              className="w-full wood-bg text-white py-3 rounded-full flex items-center justify-center space-x-2 hover:opacity-90 transition-all group"
+            >
+              <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
+              <span className="text-sm font-medium">Adicionar</span>
+            </button>
+          ) : (
+            <div className="flex items-center justify-between bg-[#f5f5f0] rounded-full p-1 border border-[#5D4037]/10">
+              <button
+                onClick={() => updateQuantity(product.id, quantity - 1)}
+                className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
               >
-                <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform" />
-                <span className="text-sm font-medium">Adicionar</span>
-              </motion.button>
-            ) : (
-              <motion.div
-                key="quantity-selector"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="flex items-center justify-between bg-[#f5f5f0] rounded-full p-1 border border-[#5D4037]/10"
+                <Minus className="w-4 h-4" />
+              </button>
+              <span className="font-bold text-[#5D4037]">{quantity}</span>
+              <button
+                onClick={() => updateQuantity(product.id, quantity + 1)}
+                className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
               >
-                <button
-                  onClick={() => updateQuantity(product.id, quantity - 1)}
-                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="font-bold text-[#5D4037]">{quantity}</span>
-                <button
-                  onClick={() => updateQuantity(product.id, quantity + 1)}
-                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <Plus className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

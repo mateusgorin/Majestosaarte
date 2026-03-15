@@ -6,8 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { CartProvider, Product } from '@/hooks/use-cart';
-import { motion, AnimatePresence } from 'motion/react';
+import { Product } from '@/hooks/use-cart';
 import { Cookie } from 'lucide-react';
 
 const DELICIAS_PRODUCTS: Product[] = [
@@ -41,25 +40,13 @@ export default function DeliciasPage() {
               </div>
             </div>
 
-            <motion.div 
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-            >
-              <AnimatePresence mode="popLayout">
-                {DELICIAS_PRODUCTS.map((product) => (
-                  <motion.div
-                    key={product.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ProductCard product={product} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {DELICIAS_PRODUCTS.map((product) => (
+                <div key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
 
             <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-[3rem] p-8 md:p-12 warm-shadow border border-[#5D4037]/5">
               <div className="relative aspect-video rounded-2xl overflow-hidden">

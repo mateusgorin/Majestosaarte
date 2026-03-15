@@ -7,7 +7,6 @@ import { useCart } from '@/hooks/use-cart';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Trash2, Plus, Minus, ArrowLeft, MessageCircle, ShoppingBag, User, Phone } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 
 function CartContent() {
   const { cart, removeFromCart, updateQuantity, totalPrice, totalItems, clearCart } = useCart();
@@ -54,15 +53,13 @@ function CartContent() {
           <p className="text-[#3E2723]/70 mb-10">
             Que tal explorar nossas criações e encontrar algo especial para você ou para presentear?
           </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link 
-              href="/artesanato" 
-              className="inline-flex items-center space-x-2 wood-bg text-white px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Voltar para a Loja</span>
-            </Link>
-          </motion.div>
+          <Link 
+            href="/artesanato" 
+            className="inline-flex items-center space-x-2 wood-bg text-white px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Voltar para a Loja</span>
+          </Link>
         </div>
       </div>
     );
@@ -75,59 +72,53 @@ function CartContent() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Items List */}
         <div className="lg:col-span-2 space-y-6">
-          <AnimatePresence>
-            {cart.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="bg-white rounded-3xl p-6 warm-shadow border border-[#5D4037]/5 flex flex-col sm:flex-row items-center gap-6"
-              >
-                <div className="relative w-24 h-24 rounded-2xl overflow-hidden shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                
-                <div className="flex-grow text-center sm:text-left">
-                  <h3 className="text-xl font-serif text-[#3E2723] mb-1">{item.name}</h3>
-                  <p className="text-sm text-[#3E2723]/50 uppercase tracking-wider mb-2">{item.category}</p>
-                  <p className="text-[#C5A059] font-medium">
-                    R$ {item.price.toFixed(2).replace('.', ',')}
-                  </p>
-                </div>
-                
-                <div className="flex items-center bg-[#f5f5f0] rounded-full p-1 border border-[#5D4037]/10">
-                  <button
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="w-10 text-center font-medium text-[#5D4037]">{item.quantity}</span>
-                  <button
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-                
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-3xl p-6 warm-shadow border border-[#5D4037]/5 flex flex-col sm:flex-row items-center gap-6"
+            >
+              <div className="relative w-24 h-24 rounded-2xl overflow-hidden shrink-0">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              
+              <div className="flex-grow text-center sm:text-left">
+                <h3 className="text-xl font-serif text-[#3E2723] mb-1">{item.name}</h3>
+                <p className="text-sm text-[#3E2723]/50 uppercase tracking-wider mb-2">{item.category}</p>
+                <p className="text-[#C5A059] font-medium">
+                  R$ {item.price.toFixed(2).replace('.', ',')}
+                </p>
+              </div>
+              
+              <div className="flex items-center bg-[#f5f5f0] rounded-full p-1 border border-[#5D4037]/10">
                 <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="p-3 text-[#ff4444] hover:bg-[#ff4444]/5 rounded-full transition-colors"
+                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
                 >
-                  <Trash2 className="w-5 h-5" />
+                  <Minus className="w-4 h-4" />
                 </button>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <span className="w-10 text-center font-medium text-[#5D4037]">{item.quantity}</span>
+                <button
+                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  className="p-2 hover:bg-white rounded-full transition-colors text-[#5D4037]"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="p-3 text-[#ff4444] hover:bg-[#ff4444]/5 rounded-full transition-colors"
+              >
+                <Trash2 className="w-5 h-5" />
+              </button>
+            </div>
+          ))}
           
           <button 
             onClick={() => clearCart()}
@@ -137,15 +128,13 @@ function CartContent() {
           </button>
 
           {/* Mobile Checkout Shortcut */}
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button 
             onClick={() => document.getElementById('checkout-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full wood-bg text-white py-4 rounded-full font-bold flex items-center justify-center space-x-2 shadow-md"
           >
             <span>Ir para Finalização</span>
             <ArrowLeft className="w-4 h-4 rotate-180" />
-          </motion.button>
+          </button>
         </div>
 
         {/* Summary & Checkout Form */}
@@ -203,15 +192,13 @@ function CartContent() {
                 </div>
               </div>
               
-              <motion.button
+              <button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className="w-full bg-[#25D366] text-white py-5 rounded-full font-bold text-lg flex items-center justify-center space-x-3 hover:opacity-90 transition-all shadow-lg"
               >
                 <MessageCircle className="w-6 h-6" />
                 <span>Finalizar no WhatsApp</span>
-              </motion.button>
+              </button>
             </form>
             
             <p className="mt-6 text-center text-xs text-[#3E2723]/50 leading-relaxed">
