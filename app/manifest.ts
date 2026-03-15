@@ -14,12 +14,16 @@ export default function manifest(): MetadataRoute.Manifest {
         src: 'https://i.postimg.cc/mD3m9q8p/heart-icon.png',
         sizes: '192x192',
         type: 'image/png',
+        purpose: 'any',
       },
       {
         src: 'https://i.postimg.cc/mD3m9q8p/heart-icon.png',
         sizes: '512x512',
         type: 'image/png',
+        purpose: 'maskable',
       },
     ],
+    orientation: 'portrait',
+    scope: '/',
   }
 }
